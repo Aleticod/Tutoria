@@ -17,10 +17,3 @@
 * Presionar en el boton subir.
 * Realizar las consultas disponibles
 
-## Screenshots
-### Cargar datos
-![ScreenShot](https://github.com/Aleticod/Tutoria/blob/main/screenshots/ingresar.png)
-### Alumnos que no seran tutorados en 2022-1
-![ScreenShot](https://github.com/Aleticod/Tutoria/blob/main/screenshots/no_matriculados.png)
-### Alumnos nuevos para tutoria
-![ScreenShot](https://github.com/Aleticod/Tutoria/blob/main/screenshots/nuevos_alumnos.png)
