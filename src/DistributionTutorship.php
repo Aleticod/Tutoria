@@ -21,7 +21,7 @@ class DistributionTutorship implements Distribution {
     }
 
     public function distribution() : array {
-
+        DistributionTutorship::emptyTutorship();
         while(count($this->students) > 0) {
             foreach($this->tutorship as $tutor=>$tutorsStudents) {
                 $codeStudent = array_key_first($this->students);

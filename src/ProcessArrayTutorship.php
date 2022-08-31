@@ -5,25 +5,29 @@ require_once __DIR__.'/interfaces/TutorshipInterface.php';
 require_once __DIR__.'/interfaces/NormalizeTutorshipInterface.php';
 
 class ProcessArrayTutorship extends ProcessArray implements Tutorship, NormalizeTutorship {
+    protected $arrayResultStudents = [];
+    protected $arrayResultTutors= [];
+    protected $arrayResultGroup = [];
 
     public function extractStudents() : array{
+        
         $arrayLength = ProcessArrayTutorship::arrayLength();
         for($i = 1; $i < $arrayLength; $i++) {
             if(strlen($this->array[$i][0]) <=6) {
-                array_push($this->arrayResult, $this->array[$i]);
+                array_push($this->arrayResultStudents, $this->array[$i]);
             }
         }
-        return $this->arrayResult;
+        return $this->arrayResultStudents;
     }
 
     public function extractTutors() : array{
         $arrayLength = ProcessArrayTutorship::arrayLength();
         for($i = 1; $i < $arrayLength; $i++) {
             if(strlen($this->array[$i][0]) > 6) {
-                array_push($this->arrayResult, $this->array[$i]);
+                array_push($this->arrayResultTutors, $this->array[$i]);
             }
         }
-        return $this->arrayResult;
+        return $this->arrayResultTutors;
 
     }
 
@@ -43,10 +47,10 @@ class ProcessArrayTutorship extends ProcessArray implements Tutorship, Normalize
                         break;
                     }
                 }
-                $this->arrayResult[$tutorCode] = $auxArray;
+                $this->arrayResultGroup[$tutorCode] = $auxArray;
             }  
         }
-        return $this->arrayResult;
+        return $this->arrayResultGroup;
     }
 
 }

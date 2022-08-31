@@ -5,7 +5,7 @@ namespace App;
 class TutorshipToSimpleArray{
     private $tutors;
     private $tutorship;
-    private $simpleTutorship = [];
+    private $simpleTutorship = [['Codigo', 'Nombres']];
 
     public function __construct (array $tutorship, array $tutors) {
         $this->tutorship = $tutorship;

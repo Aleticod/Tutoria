@@ -4,11 +4,26 @@ namespace App;
 require_once __DIR__.'/interfaces/StudentsInterface.php';
 
 class ProcessArrayStudent extends ProcessArray implements Students {
+    protected $arrayRestult = [];
+
 
     public static function currentYear() : int {
         $year = date('Y');
         $year = substr($year, 2);
         return (int) $year;
+    }
+
+    public function removeHeader () : array {
+        
+        array_splice($this->array, 0, 1);
+
+        if (count($this->array[0]) === 3) {
+            $arrayLength = ProcessArrayStudent::arrayLength();
+            for($i = 0; $i < $arrayLength; $i++) {
+                array_splice($this->array[$i], 0, 1);
+            }
+        }
+        return $this->array;
     }
 
     public function groupByCode () : array {
@@ -49,12 +64,12 @@ class ProcessArrayStudent extends ProcessArray implements Students {
                     if (($i < 10) && (strlen($this->array[$indexCount][0]) == 5)) {
 
                         if ($i == substr($this->array[$indexCount][0],0,1)) {
-                            array_push($aux_array, array_slice($this->array[$indexCount],1));
+                            array_push($aux_array, $this->array[$indexCount]);
                         }
                     }
                     else {
                         if($i == substr($this->array[$indexCount][0], 0, 2)) {
-                            array_push($aux_array, array_slice($this->array[$indexCount],1));
+                            array_push($aux_array, $this->array[$indexCount]);
                         }
                     }
                     $indexCount ++;

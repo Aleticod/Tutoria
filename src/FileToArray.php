@@ -19,6 +19,7 @@ class FileToArray implements ConvertFileToArray {
     }
 
     public static function stringToArray(string $string) : array {
+        $string = str_replace(';',',',$string);
         return explode(',', $string);
     }
 

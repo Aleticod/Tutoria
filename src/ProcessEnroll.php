@@ -18,17 +18,25 @@ class ProcessEnroll implements Enroll, ArrayOperations {
     public function diferenceTwoArrays(array $firstArray, array $secondArray) : array {
         $auxArray = [];
         $lengthSecondArray = count($secondArray);
+        //echo "La longitud del segundo arra es $lengthSecondArray \n";
         // $lengthFirstArray = count($firstArray);
         foreach($firstArray as $firstValue){
             $auxCount = 0;
             foreach($secondArray as $secondValue) {
+                //echo "estos son los valores {$firstValue[0]} y {$secondValue[0]} \n "
                 if($firstValue[0] != $secondValue[0]) {
                     $auxCount++;
                 }
+                else {
+                    break;
+                }
             }
+            //echo 'El valor de auxCount es ' . $auxCount . " y el codigo es " . $firstValue[0]. ' '. $firstValue[1]."\n" ;
             if($auxCount == $lengthSecondArray) {
                 array_push($auxArray, $firstValue);
             }
+            //echo "Esto es los valores de auxiliar array ==========================\n";
+            //var_dump($auxArray);
         }
         return $auxArray;
     }

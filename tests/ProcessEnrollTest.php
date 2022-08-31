@@ -24,10 +24,11 @@ class ProcessEnrollTest extends TestCase {
                         ['145635','ACHAHUANCO-VALENCIA-ANDR'],
                         ['536436','PFOCCORI-QUISPE-ALEX'],
         ];
-
+        var_dump($studentsCurrentEnroll);
         $sut = new ProcessEnroll($studentsWithTutor, $studentsCurrentEnroll);
         $newStudents = $sut->extractNewStudents();
-        //var_dump($newStudents);
+        echo "new students \n";
+        var_dump($newStudents);
         $this->assertEquals(7, count($newStudents));
     }
 
@@ -52,6 +53,7 @@ class ProcessEnrollTest extends TestCase {
 
         $sut = new ProcessEnroll($studentsWithTutor, $studentsCurrentEnroll);
         $retiredStudents = $sut->extractRetiredStudents();
+        echo "retired students \n";
         var_dump($retiredStudents);
         $this->assertEquals(2, count($retiredStudents));
     

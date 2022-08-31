@@ -42,7 +42,7 @@ class DistributionBalancedTest extends TestCase {
         $this->assertEquals(3, count($emptyTutorship));
 
         $distributedTutorship = $sut->distribution();
-        //var_dump($distributedTutorship);
+        var_dump($distributedTutorship);
         $this->assertEquals(4, count($distributedTutorship['Docente #1']));
         $this->assertEquals(3, count($distributedTutorship['Docente #3']));
 

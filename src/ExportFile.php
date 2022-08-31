@@ -5,7 +5,7 @@ namespace App;
 class ExportFile {
     private $array;
     private $fileName;
-    private $exportDirectory = __DIR__.'/../archivos/';
+    private $exportDirectory = __DIR__.'/../temp-files/';
 
     public function __construct(array $array, string $fileName) {
         $this->array = $array;
