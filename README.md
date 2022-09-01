@@ -1,22 +1,19 @@
- # Distribucion de Tutorias
-
-> Carga archivos csv para que despues muestrar los alumnos que no seran turorados en el 2022-1 y los alumnos nuevos para tutoria
+ # Trabajo de Laboratorio del Curso Desarrollo de Software
 
 
-## Tecnologías
+
+## Tecnologías usadas
 * PHP
 * Mysql
+* Composer
+* Boostrap
 
 ## Pasos para la ejecución
+* Clonar el repositorio en la en la siguiente direccion /opt/lampp/htdocs/ con el siguiente comando *$ git clone https://github.com/Aleticod/Tutoria.git*
 * crear la base de datos en phpMyAdmin con el nombre: bd_tutorados
-* subir el archivo Tutoria.sql
-* subir los archivos de entrada
+* Importar el archivo Tutoria.sql a la base de datos
+* Abrir un navegador y colocar la siguiente direccion *localhost/Tutoria/*
+* Subir los archivos de entrada (Alumnos matriculados en 2021-II y Alumnos matriculados en 2022-I) con extesion csv.
+* Presionar en el boton subir.
 * Realizar las consultas disponibles
 
-## Screenshots
-### Cargar datos
-![ScreenShot](https://github.com/wildkite/Distribucion-Tutoria/blob/main/screenshots/ingresar.png)
-### Alumnos que no seran tutorados en 2022-1
-![ScreenShot](https://github.com/wildkite/Distribucion-Tutoria/blob/main/screenshots/no_matriculados.png)
-### Alumnos nuevos para tutoria
-![ScreenShot](https://github.com/wildkite/Distribucion-Tutoria/blob/main/screenshots/nueva_distribucion.png)
