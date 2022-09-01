@@ -42,7 +42,7 @@ class NormalizeTutorshipTest extends TestCase {
         $sut = new TutorshipToSimpleArray($tutorship, $tutors);
         $simpleTutorship = $sut->convertToSimple();
         //var_dump($simpleTutorship);
-        $this->assertEquals(18, count($simpleTutorship));
+        $this->assertEquals(19, count($simpleTutorship));
 
     }
 

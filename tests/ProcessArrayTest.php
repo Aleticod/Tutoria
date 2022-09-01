@@ -27,7 +27,7 @@ class ProcessArrayTest extends TestCase {
 
         $sut = new ProcessArrayStudent($arrayStudents);
         $groupedArray = $sut->groupByCode();
-        var_dump($groupedArray);
+        //var_dump($groupedArray);
         $this->assertArrayHasKey('19',$groupedArray, 'It has not');
         $this->assertArrayHasKey('2',$groupedArray, 'It has not');
         $this->assertArrayHasKey('4',$groupedArray, 'It has not');

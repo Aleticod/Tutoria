@@ -1,0 +1,412 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header-section {
+  background-color: #006B9B;
+  padding: 20px 120px;
+}
+
+.header-section-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 1125px;
+  margin: 0 auto;
+}
+
+.logo-figure-container img {
+  width: 120px;
+}
+
+.header-section-purpose {
+  margin: auto 0;
+}
+
+.purpose-text {
+  color: #EF712B;
+  text-align: center;
+  font-family: 'Nunito';
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.course-text {
+  color: white;
+  text-align: center;
+  font-family: 'Nunito';
+}
+
+.header-section-my-brand {
+  margin: auto 0;
+}
+
+.my-brand-text {
+  color: rgb(241, 241, 241);
+  font-family: 'Nunito';
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.main-section-container {
+  background-color: #0275aa;
+  padding: 60px 0 20px;
+}
+
+.main-section-principal-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1125px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+.main-section-description-content {
+  padding-top: 20px;
+  width: 50%;
+  min-width: 800px;
+}
+
+.main-section-title-container {
+  margin-bottom: 8px;
+}
+
+.main-section-title-white {
+  color: white;
+  font-family: 'Nunito';
+  font-size: 36px;
+}
+
+.main-section-title-orange {
+  color:#EF712B;
+}
+
+.main-section-function-text {
+  color: white;
+  font-family: 'Nunito';
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.subtitle-amortization-type {
+  color:#80D331;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.main-section-form-content {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: 70%;
+  max-width: 100%;
+}
+
+.main-section-form-container {
+  margin-bottom: 25px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 20px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 9px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.title-form {
+  color: #333;;
+  font-family: 'Nunito';
+  font-size: 22px;
+  line-height: normal;
+  font-weight: 700;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+
+.form-label {
+  display: inline-block;
+  font-family: 'Nunito';
+  font-size: 17px;
+  font-weight: 500;
+  min-height: 40px;
+  width: 140px;
+  color: black;
+  padding-left: 5px;
+
+}
+
+.form-select-text {
+  color: #575254;
+  width: calc(100% - 174px);
+  min-height: 40px;
+  vertical-align: middle;
+  font-family: 'Nunito';
+  font-size: 14px;
+  padding: 6px 4px;
+  border-width: 0 0 1px;
+}
+
+.form-input-text {
+  display: inline-block;
+  min-height: 40px;
+  width: calc(100% - 274px);
+  color: #706b6d;
+  font-family: 'Nunito';
+  font-size: 18px;
+  line-height: 1.8;
+  padding: 6px 4px;
+  vertical-align: middle;
+  background-color: transparent;
+  border-width: 0 0 1px;
+}
+
+.form-text-description {
+  display: inline-block;
+  width: 40px;
+  font-family: 'Nunito';
+  padding: 10px;
+}
+
+.form-select-time {
+  display: inline-block;
+  color: #706b6d;
+  min-height: 40px;
+  width: 90px;
+  font-family: 'Nunito';
+  line-height: 1.8;
+  font-size: 18px;
+  padding: 6px 2px;
+  border-width: 0;
+}
+
+.input-submit {
+  position: relative;
+  margin: 20px 0 20px 0;
+  text-align: center;
+  width: auto;
+
+}
+
+.form-input-options {
+  background-color: #0275aa;
+  color: #fff;
+  font-family: 'Nunito';
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-top: 1.5%;
+  letter-spacing: 0;
+  min-height: 48px;
+  max-width: 90px;
+  cursor: pointer;
+  border: 0;
+  margin: 4px 2px;
+}
+
+.form-input-options:hover {
+  background-color: #004869;
+  scale: 1.1;
+}
+
+
+
+.form-input-submit, .form-input-refresh {
+  background-color: #F43F36;
+  color: #fff;
+  font-family: 'Nunito';
+  font-weight: 400;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 0 20px;
+  margin-top: 1.5%;
+  letter-spacing: 0;
+  min-height: 48px;
+  cursor: pointer;
+  border: 0;
+  margin: 0 15px;
+}
+
+.form-input-submit:hover, .form-input-refresh:hover {
+  background-color: #ce332b;
+  scale: 1.05;
+
+}
+
+.main-section-js-container {
+  padding: 20px;
+}
+
+.main-section-js-content {
+  background-color: #E6F2F8;
+  font-family: 'Nunito';
+  font-size: 18px;
+  max-width: 800px;
+  border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: 0 9px 10px 0 rgb(0 0 0 / 12%);
+  margin: 0 auto;
+}
+
+.main-section-js-content h3 {
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px 15px 10px;
+}
+
+.java-data {
+  padding: 0 150px;
+}
+
+.java-data h4 {
+  font-family: 'Nunito';
+  font-size: 18px;
+  font-weight: 500;
+}
+
+
+.java-print-container{
+  padding: 0 50px 20px;
+}
+
+.java-print-container .content-item {
+  display: inline-block;
+  width: 50px;
+  text-align: left;
+}
+
+.java-print-container .content-codigo {
+  display: inline-block;
+  width: 95px;
+  text-align: left;
+}
+
+.java-print-container .content-description {
+  display: inline-block;
+  min-width: 450px;
+  text-align: left;
+}
+
+.java-table-title {
+  color: darkcyan;
+  font-weight: 700;
+  width: fit-content;
+  padding-bottom: 10px;
+  margin: 15px auto;
+  border: 1px solid black;
+  border-width: 0 0 1px;
+}
+
+.java-table-content {
+  width: fit-content;
+  margin: 12px auto;
+  font-size: 16px;
+  
+}
+
+.java-table-total {
+  color: darkgreen;
+  width: fit-content;
+  font-weight: 700;
+  padding-top: 10px;
+  margin: 15px auto;
+  border: 1px solid black;
+  border-width: 1px 0 0;
+}
+
+.footer-section-container {
+  color: white;
+  background-color: #322C2E;
+  padding-top: 20px;
+}
+
+.footer-section-agreement {
+  width: 60%;
+  margin: 0 auto;
+  margin-bottom: 5px;
+}
+
+.footer-section-agreement-title {
+  color: white;
+  text-align: center;
+  font-family: 'Nunito';
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.footer-section-title-enterprice {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.footer-section-title-university {
+  color: #dd253e;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.footer-section-image-agreement {
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-section-enterprice-logo {
+  padding: 0 20px;
+}
+
+.footer-section-enterprice-logo img {
+  width: 90px;
+}
+
+.footer-section-university-logo {
+  padding: 0 20px;
+}
+
+.footer-section-university-logo img {
+  width: 90px;
+}
+
+.footer-section-coworkers {
+  width: 400px;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.footer-section-who-are-we {
+  text-align: center;
+  font-family: 'Nunito';
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.footer-section-coworkers-names  li{
+  display: block;
+  font-family: 'Nunito';
+  font-size: 14px;
+}
+
+.footer-section-rights {
+  border: 1px rgb(99, 98, 98) solid;
+  border-width: 1px 0 0;
+  padding: 10px;
+  max-width: 1125px;
+  margin: 0 auto;
+}
+
+.footer-section-text-right {
+  text-align: center;
+  font-family: 'Nunito';
+  font-size: 12px;
+}
+

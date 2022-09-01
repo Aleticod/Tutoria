@@ -14,90 +14,103 @@ require_once __DIR__.'/ProcessArrayTutor.php';
 require_once __DIR__.'/ProcessEnroll.php';
 require_once __DIR__.'/TutorshipToSimpleArray.php';
 
+class Program {
 
-$distribution = new FileToArray(__DIR__.'/../test-files/DistribucionTutoria-2022-1.csv');
-$generalEnrolled = new FileToArray(__DIR__.'/../test-files/MatriculadosGeneral-2022-1.csv');
-$teachers = new FileToArray(__DIR__.'/../test-files/Docentes-2022-1.csv');
+    public static function resultNewStudents($fileName1, $fileName2) : array {
+        $distribution = new FileToArray(__DIR__."/../files/$fileName1"); //DistribucionTutoria-2022-1.csv
+        $arrayDistribution = $distribution->eachRowToArray();
 
-$arrayDistribution = $distribution->eachRowToArray();
-$arrayEnrolled = $generalEnrolled->eachRowToArray();
-$arrayTeachers = $teachers->eachRowToArray();
+        $generalEnrolled = new FileToArray(__DIR__."/../files/$fileName2");//
+        $arrayEnrolled = $generalEnrolled->eachRowToArray();
 
-//var_dump($arrayDistribution);
-//var_dump($arrayEnrolled);
-//var_dump($arrayTeachers);
+        $processTutorship = new ProcessArrayTutorship($arrayDistribution);
+        $studentsWithTutor = $processTutorship->extractStudents();
 
-$processStudents = new ProcessArrayStudent($arrayEnrolled);
-$studentsGroups = $processStudents->groupByCode();
-$studentsWithoutHeader = $processStudents->removeHeader();
-//var_dump($studentsGroups);
-//var_dump($studentsWithoutHeader);
+        $processStudents = new ProcessArrayStudent($arrayEnrolled);
+        $studentsWithoutHeader = $processStudents->removeHeader();
 
-$processTutor = new ProcessArrayTutor($arrayTeachers);
-$tutorWithoutHeader = $processTutor->removeHeader();
-//var_dump($tutorWithoutHeader);
+        $processEnroll = new ProcessEnroll($studentsWithTutor, $studentsWithoutHeader);
+        $newStudents = $processEnroll->extractNewStudents();
 
-$processTutorship = new ProcessArrayTutorship($arrayDistribution);
-$studentsWithTutor = $processTutorship->extractStudents();
-$tutorsWithJobs = $processTutorship->extractTutors();
-$tutorshipGroupByTutors = $processTutorship->groupByTutor();
-//var_dump($studentsWithTutor);
-//var_dump($tutorsWithJobs);
-//var_dump($tutorshipGroupByTutors);
+        return $newStudents;
+    }
 
+    public static function resultRetiredStudents($fileName1, $fileName2) : array {
+        $distribution = new FileToArray(__DIR__."/../files/$fileName1");
+        $arrayDistribution = $distribution->eachRowToArray();
 
+        $generalEnrolled = new FileToArray(__DIR__."/../files/$fileName2");
+        $arrayEnrolled = $generalEnrolled->eachRowToArray();
 
-$processEnroll = new ProcessEnroll($studentsWithTutor, $studentsWithoutHeader);
-$newStudents = $processEnroll->extractNewStudents();
-$retiredStudents = $processEnroll->extractRetiredStudents();
+        $processTutorship = new ProcessArrayTutorship($arrayDistribution);
+        $studentsWithTutor = $processTutorship->extractStudents();
 
-//var_dump($newStudents);
-//var_dump($retiredStudents);
+        $processStudents = new ProcessArrayStudent($arrayEnrolled);
+        $studentsWithoutHeader = $processStudents->removeHeader();
 
-$processCleanTutorship = new CleanTutorship($tutorshipGroupByTutors, $retiredStudents);
-$cleanTutorship = $processCleanTutorship->cleaningTutorship();
+        $processEnroll = new ProcessEnroll($studentsWithTutor, $studentsWithoutHeader);
+        $retiredStudents = $processEnroll->extractRetiredStudents();
 
-//var_dump($cleanTutorship);
+        return $retiredStudents;
+    }
 
-$processNewStudents = new ProcessArrayStudent($newStudents);
-$newStudentsGroups = $processNewStudents->groupByCode();
-//var_dump($newStudentsGroups);
+    public static function resultBalancedTutorship ($fileName1, $fileName2) : array {
+        $distribution = new FileToArray(__DIR__."/../files/$fileName1"); //DistribucionTutoria-2022-1.csv
+        $arrayDistribution = $distribution->eachRowToArray();
 
-$processBalanceTutorship = new BalanceTutorship($cleanTutorship, $newStudentsGroups);
-$balancedTutorship = $processBalanceTutorship->balance();
+        $generalEnrolled = new FileToArray(__DIR__."/../files/$fileName2"); //MatriculadosGeneral-2022-1.csv
+        $arrayEnrolled = $generalEnrolled->eachRowToArray();
 
-//var_dump($balancedTutorship);
+        $processStudents = new ProcessArrayStudent($arrayEnrolled);
+        $studentsWithoutHeader = $processStudents->removeHeader();
 
+        $processTutorship = new ProcessArrayTutorship($arrayDistribution);
+        $studentsWithTutor = $processTutorship->extractStudents();
+        $tutorshipGroupByTutors = $processTutorship->groupByTutor();
 
+        $processEnroll = new ProcessEnroll($studentsWithTutor, $studentsWithoutHeader);
+        $newStudents = $processEnroll->extractNewStudents();
+        $retiredStudents = $processEnroll->extractRetiredStudents();
 
-$processDistributionTutorship = new DistributionTutorship($tutorWithoutHeader, $studentsGroups);
-$distributedTutorship = $processDistributionTutorship->distribution();
+        $processCleanTutorship = new CleanTutorship($tutorshipGroupByTutors, $retiredStudents);
+        $cleanTutorship = $processCleanTutorship->cleaningTutorship();
 
-//var_dump($distributedTutorship);
+        $processNewStudents = new ProcessArrayStudent($newStudents);
+        $newStudentsGroups = $processNewStudents->groupByCode();
 
-$processNormalizeBalancedTutorship = new TutorshipToSimpleArray($balancedTutorship,$tutorsWithJobs );
-$arraySimpleBalancedTutorship = $processNormalizeBalancedTutorship->convertToSimple();
+        $processBalanceTutorship = new BalanceTutorship($cleanTutorship, $newStudentsGroups);
+        $balancedTutorship = $processBalanceTutorship->balance();
 
-//var_dump($arraySimpleBalancedTutorship);
+        $processTutorship = new ProcessArrayTutorship($arrayDistribution);
+        $tutorsWithJobs = $processTutorship->extractTutors();
 
-$processNormalizeDistributedTutorship = new TutorshipToSimpleArray($distributedTutorship,$tutorWithoutHeader );
-$arraySimpleDistributedTutorship = $processNormalizeDistributedTutorship->convertToSimple();
+        $processNormalizeBalancedTutorship = new TutorshipToSimpleArray($balancedTutorship,$tutorsWithJobs );
+        $arraySimpleBalancedTutorship = $processNormalizeBalancedTutorship->convertToSimple();
 
-//var_dump($arraySimpleDistributedTutorship);
+        return $arraySimpleBalancedTutorship;
+    }
 
-// array_unshift($newStudents, ['Codigo', 'Nombres']);
-// $processExportNewStudentsFile = new ExportFile($newStudents, 'new-students.csv');
-// $processExportNewStudentsFile->exportToCsv();
+    public static function resultDistributionTutorship($fileName1, $fileName2) {
 
-// array_unshift($retiredStudents, ['Codigo', 'Nombres']);
-// $processExportRetiredStudentsFile = new ExportFile($retiredStudents, 'retired-students.csv');
-// $processExportRetiredStudentsFile->exportToCsv();
+        $teachers = new FileToArray(__DIR__."/../files/$fileName1");
+        $arrayTeachers = $teachers->eachRowToArray();
 
+        $generalEnrolled = new FileToArray(__DIR__."/../files/$fileName2");
+        $arrayEnrolled = $generalEnrolled->eachRowToArray();
 
-// $processExportBalancedFile = new ExportFile($arraySimpleBalancedTutorship, 'balanced-tutorship.csv');
-// $processExportBalancedFile->exportToCsv();
+        $processTutor = new ProcessArrayTutor($arrayTeachers);
+        $tutorWithoutHeader = $processTutor->removeHeader();
 
-// $processExportDistributedFile = new ExportFile($arraySimpleDistributedTutorship, 'distributed-tutorship.csv');
-// $processExportDistributedFile->exportToCsv();
+        $processStudents = new ProcessArrayStudent($arrayEnrolled);
+        $studentsGroups = $processStudents->groupByCode();
 
+        $processDistributionTutorship = new DistributionTutorship($tutorWithoutHeader, $studentsGroups);
+        $distributedTutorship = $processDistributionTutorship->distribution();
+
+        $processNormalizeDistributedTutorship = new TutorshipToSimpleArray($distributedTutorship,$tutorWithoutHeader );
+        $arraySimpleDistributedTutorship = $processNormalizeDistributedTutorship->convertToSimple();
+
+        return $arraySimpleDistributedTutorship;
+    }
+}
 
